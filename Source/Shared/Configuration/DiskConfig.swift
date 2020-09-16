@@ -15,22 +15,28 @@ public struct DiskConfig {
   /// Support only on iOS and tvOS.
   public let protectionType: FileProtectionType?
 
+  public let filenameCompatibleKeys: Bool
+
   public init(name: String, expiry: Expiry = .never,
               maxSize: UInt = 0, directory: URL? = nil,
-              protectionType: FileProtectionType? = nil) {
+              protectionType: FileProtectionType? = nil,
+              filenameCompatibleKeys: Bool = false) {
     self.name = name
     self.expiry = expiry
     self.maxSize = maxSize
     self.directory = directory
     self.protectionType = protectionType
+    self.filenameCompatibleKeys = filenameCompatibleKeys
   }
   #else
   public init(name: String, expiry: Expiry = .never,
-              maxSize: UInt = 0, directory: URL? = nil) {
+              maxSize: UInt = 0, directory: URL? = nil,
+              filenameCompatibleKeys: Bool = false) {
     self.name = name
     self.expiry = expiry
     self.maxSize = maxSize
     self.directory = directory
+    self.filenameCompatibleKeys = filenameCompatibleKeys
   }
   #endif
 }

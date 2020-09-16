@@ -178,7 +178,8 @@ extension DiskStorage {
    - Returns: A string path based on key
    */
   func makeFilePath(for key: String) -> String {
-    return "\(path)/\(makeFileName(for: key))"
+	let filename: String = config.filenameCompatibleKeys ? key : makeFileName(for: key)
+    return "\(path)/\(filename)"
   }
 
   /// Calculates total disk cache size.
